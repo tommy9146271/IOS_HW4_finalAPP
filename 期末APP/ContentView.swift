@@ -4,23 +4,28 @@
 //
 //  Created by 李子暘 on 2022/12/17.
 //
-
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        TabView{
+            HomeView()
+                .tabItem {
+                    Label("首頁", systemImage: "house.fill")
+                }
+            MapView()
+                .tabItem{
+                    Label("地圖", systemImage: "location.fill")
+                }
         }
-        .padding()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(NearbySearchClass())
+            .environmentObject(LocationClass())
     }
 }
